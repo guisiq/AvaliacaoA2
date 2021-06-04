@@ -11,15 +11,15 @@ import javax.validation.constraints.Pattern;
 public class Usuario implements Cloneable {
 
 	private Integer id;
-	@Pattern(regexp = "[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}", message = "O cpf deve seguir o seguinte padrï¿½o: ex.: 999.999.999-99")
+	@Pattern(regexp = "[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}", message = "O cpf deve seguir o seguinte padrão: ex.: 999.999.999-99")
 	private String cpf;
 	private String nome;
 	
 	@Past(message = "A data deve estar no passado.")
 	private LocalDate dataNascimento;
 	
-	@Email(message = "Informe um email vï¿½lido.")
-	@NotNull(message = "O email nï¿½o pode ser nulo.")
+	@Email(message = "Informe um email válido.")
+	@NotNull(message = "O email não pode ser nulo.")
 	@NotEmpty(message = "O email deve ser preenchido.")
 	private String email;
 	

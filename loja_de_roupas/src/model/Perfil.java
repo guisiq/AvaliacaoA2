@@ -1,10 +1,9 @@
 package model;
 
-
 public enum Perfil {
 	ADMINISTRADOR (1, "Adminstrador"), 
 	CLIENTE (2, "Cliente"), 
-	FUNCIONARIO (3, "Funcionï¿½rio");
+	FUNCIONARIO (3, "Funcionário");
 	
 	private int value;
 	private String label;
