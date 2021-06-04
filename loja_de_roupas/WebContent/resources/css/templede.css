@@ -106,9 +106,8 @@ h1 {
 
 section {
     background-color: #f1f1f1f1;
-    margin: 1%;
-    /* margin-left: 20%;
-    margin-right: 20%; */
+    margin: auto;
+    margin-top: 3%;
     max-width: 800px;
     border-radius: 5px;
     box-shadow: -5px 4px 4px #e0e0e0;
@@ -176,10 +175,13 @@ a img {
     color: violet;
 }
 /*------------------------------------------------------*/
-form{
-    width:100%;
-}
+
 @media only screen and (max-width: 600px) {
+    
+    form{
+        width:100%;
+    }
+
     nav ul li {
         float: left;
         clear: both;

@@ -8,7 +8,8 @@
 </h:head>
 <h:body>
 <ui:composition template="templade.xhtml"> 
-<ui:define name="conteudo"> <h1>Cadastro de Usuário</h1>
+<ui:define name="conteudo"> 
+	<h2>Cadastro de Usuário</h2>
 	<h:form id="form1">
 		<h:messages id="messages" 
 					globalOnly="false"
@@ -20,7 +21,6 @@
 			<h:outputLabel value="CPF: " />
 			<h:panelGroup id="pgCpf">
 				<h:inputText id="itCpf" 
-							 binding="#{usuarioController.uicCpf}"
 							 value="#{usuarioController.usuario.cpf}" >
 					<f:ajax	event="blur" 
 							execute="@form"
