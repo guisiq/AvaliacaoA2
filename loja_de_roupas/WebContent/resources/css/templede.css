@@ -142,16 +142,7 @@ section ul {
     list-style-type: none;
 }
 
-
-
-
-
 /*------------------------ fim do estilo das sesoes------------------------- */
-
-
-
-
-
 
 /*------------------------- estilo footer-------------------------  */
 
@@ -201,7 +192,7 @@ form{
         width: 100%;
     }
     nav {
-        /* align-items: baseline; */
+        align-items: baseline; 
     }
     a{
         padding:5px;
