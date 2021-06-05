@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	
+<ui:composition template="/templade.xhtml">
+
+<ui:define name="conteudo">
+
+	<h:messages 
+		errorStyle="color:red" 
+		warnStyle="color:orange" 
+		infoStyle="color:green"
+		globalOnly="false"/>
+		
+	<!-- Container -->
+	<div class="container-fluid">
+		<div class="row justify-content-md-center">
+			<div class="col-md-6 col-md-auto login-box">		
+	 			<h:messages styleClass="alert alert-danger hmessages"  />
+				<div class="form-row">
+				 	<div class="form-group col-md-10">
+				 		<h1 class="text-center wdi-red">Lista de Usuarios </h1>
+				    </div>
+				    <div class="form-group col-md-2">
+				    	<h:form>
+					    	<h:commandButton value="+ Usuario"
+						     	class="btn btn-success"
+								action="#{consultaUsuarioController.novoUsuario}" />
+						</h:form>
+				    </div>
+				</div>		
+				
+				<hr />
+				<h:form id="formDataTable">
+				<h:dataTable 
+				id="dataTable"
+				value="#{consultaUsuarioController.listaUsuarios}"
+				var="obj">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					<h:outputLabel value="#{obj.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">CPF</f:facet>
+					<h:outputLabel value="#{obj.cpf}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputLabel value="#{obj.nome}" />
+				</h:column>		
+				<h:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputLabel value="#{obj.email}" />
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Data de Nascimento</f:facet>
+					<h:outputLabel value="#{obj.dataNascimento}">
+						<f:convertDateTime type="localDate" pattern="dd-MM-yy"/>
+					</h:outputLabel>
+				</h:column>		
+				<h:column>
+					<f:facet name="header">Perfil</f:facet>
+					<h:outputLabel value="#{obj.perfil.label}" />
+				</h:column>	
+				<h:column>
+					<f:facet name="header">Login</f:facet>
+					<h:outputLabel value="#{obj.login}" />
+				</h:column>		
+				<h:column>
+					<f:facet name="header">Senha</f:facet>
+					<h:outputLabel value="#{obj.senha}" />
+				</h:column>		
+				<h:column>
+					<f:facet name="header">Ação</f:facet>
+					<h:commandButton value="Editar"
+						actionListener="#{usuarioController.editar(obj)}">
+						<f:ajax execute="@this" render="@form"/>
+					</h:commandButton>
+					<h:commandButton value="Excluir"
+						actionListener="#{usuarioController.excluir(obj)}">
+						<f:ajax execute="@this" render="@form:pgDataTable @form:messages"/>
+					</h:commandButton>
+				</h:column>	
+			
+			</h:dataTable>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+</ui:define>	
+</ui:composition>
+</html>

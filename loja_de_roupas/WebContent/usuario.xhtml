@@ -94,59 +94,6 @@
 			</h:commandButton>
 		</h:panelGrid>
 		
-		<h:panelGroup id="pgDataTable">
-			<h:dataTable 
-				id="dataTable"
-				value="#{usuarioController.listaUsuario}"
-				var="obj">
-				<h:column>
-					<f:facet name="header">Id</f:facet>
-					<h:outputLabel value="#{obj.id}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">CPF</f:facet>
-					<h:outputLabel value="#{obj.cpf}" />
-				</h:column>
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					<h:outputLabel value="#{obj.nome}" />
-				</h:column>		
-				<h:column>
-					<f:facet name="header">E-mail</f:facet>
-					<h:outputLabel value="#{obj.email}" />
-				</h:column>	
-				<h:column>
-					<f:facet name="header">Data de Nascimento</f:facet>
-					<h:outputLabel value="#{obj.dataNascimento}">
-						<f:convertDateTime type="localDate" pattern="dd-MM-yy"/>
-					</h:outputLabel>
-				</h:column>		
-				<h:column>
-					<f:facet name="header">Perfil</f:facet>
-					<h:outputLabel value="#{obj.perfil.label}" />
-				</h:column>	
-				<h:column>
-					<f:facet name="header">Login</f:facet>
-					<h:outputLabel value="#{obj.login}" />
-				</h:column>		
-				<h:column>
-					<f:facet name="header">Senha</f:facet>
-					<h:outputLabel value="#{obj.senha}" />
-				</h:column>		
-				<h:column>
-					<f:facet name="header">Ação</f:facet>
-					<h:commandButton value="Editar"
-						actionListener="#{usuarioController.editar(obj)}">
-						<f:ajax execute="@this" render="@form"/>
-					</h:commandButton>
-					<h:commandButton value="Excluir"
-						actionListener="#{usuarioController.excluir(obj)}">
-						<f:ajax execute="@this" render="@form:pgDataTable @form:messages"/>
-					</h:commandButton>
-				</h:column>	
-			
-			</h:dataTable>
-		</h:panelGroup>
 	</h:form>
  </ui:define>
 </ui:composition>
