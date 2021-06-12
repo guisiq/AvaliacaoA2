@@ -92,8 +92,12 @@
 				actionListener="#{usuarioController.limpar}">
 				<f:ajax execute="@this" render="pgPrincipal messages pgBotoes" />
 			</h:commandButton>
-		</h:panelGrid>
-		
+			
+		</h:panelGrid>			 
+			
+	</h:form>
+	<h:form>
+	 <h:commandLink value="Listar Usuarios" action="consultausuario.xhtml?faces-redirect=true"/>
 	</h:form>
  </ui:define>
 </ui:composition>
