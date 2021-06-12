@@ -25,7 +25,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		sql.append("  u.cpf, ");
 		sql.append("  u.nome, ");
 		sql.append("  u.email, ");
-		sql.append("  u.data_nascimento, ");
+		sql.append("  u.data_nacimento, ");
 		sql.append("  u.login, ");
 		sql.append("  u.senha, ");
 		sql.append("  u.perfil ");
@@ -49,7 +49,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				usuarioLogado.setCpf(rs.getString("cpf"));
 				usuarioLogado.setNome(rs.getString("nome"));
 				usuarioLogado.setEmail(rs.getString("email"));
-				Date data = rs.getDate("data_nascimento");
+				Date data = rs.getDate("data_nacimento");
 				usuarioLogado.setDataNascimento(data == null ? null : data.toLocalDate());
 				usuarioLogado.setLogin(rs.getString("login"));
 				usuarioLogado.setSenha(rs.getString("senha"));
@@ -80,8 +80,8 @@ public class UsuarioDAO implements DAO<Usuario> {
 		boolean deuErro = false;
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("INSERT INTO usuario ");
-		sql.append(" (cpf, nome, email, data_nascimento, login, senha, perfil) ");
+		sql.append("INSERT INTO usuario ");						
+		sql.append(" (cpf, nome, email, data_nacimento, login, senha, perfil) ");
 		sql.append("VALUES ");
 		sql.append(" (?, ?, ?, ?, ?, ?, ? ) ");
 		
@@ -136,7 +136,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		sql.append(" cpf = ?, ");
 		sql.append(" nome = ?, ");
 		sql.append(" email = ?, ");
-		sql.append(" data_nascimento = ?, ");
+		sql.append(" data_nacimento = ?, ");
 		sql.append(" login = ?, ");
 		sql.append(" senha = ?, ");
 		sql.append(" perfil = ? ");
@@ -233,7 +233,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		sql.append("  u.cpf, ");
 		sql.append("  u.nome, ");
 		sql.append("  u.email, ");
-		sql.append("  u.data_nascimento, ");
+		sql.append("  u.data_nacimento, ");
 		sql.append("  u.login, ");
 		sql.append("  u.senha, ");
 		sql.append("  u.perfil ");
@@ -252,7 +252,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				usuario.setCpf(rs.getString("cpf"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setEmail(rs.getString("email"));
-				Date data = rs.getDate("data_nascimento");
+				Date data = rs.getDate("data_nacimento");
 				usuario.setDataNascimento(data == null ? null : data.toLocalDate());
 				usuario.setLogin(rs.getString("login"));
 				usuario.setSenha(rs.getString("senha"));
@@ -293,7 +293,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 		sql.append("  u.cpf, ");
 		sql.append("  u.nome, ");
 		sql.append("  u.email, ");
-		sql.append("  u.data_nascimento, ");
+		sql.append("  u.data_nacimento, ");
 		sql.append("  u.login, ");
 		sql.append("  u.senha, ");
 		sql.append("  u.perfil ");
@@ -315,7 +315,7 @@ public class UsuarioDAO implements DAO<Usuario> {
 				usuario.setCpf(rs.getString("cpf"));
 				usuario.setNome(rs.getString("nome"));
 				usuario.setEmail(rs.getString("email"));
-				Date data = rs.getDate("data_nascimento");
+				Date data = rs.getDate("data_nacimento");
 				usuario.setDataNascimento(data == null ? null : data.toLocalDate());
 				usuario.setLogin(rs.getString("login"));
 				usuario.setSenha(rs.getString("senha"));

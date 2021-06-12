@@ -18,7 +18,7 @@ public class RoupaDAO implements DAO<Roupa> {
 		boolean deuErro = false;
 		
 		StringBuffer sql = new StringBuffer();
-		sql.append("INSERT INTO ropa ");
+		sql.append("INSERT INTO roupa ");
 		sql.append(" (categoria, cor, descricao,estoque,nome,preco,tamanho ) ");
 		sql.append("VALUES ");
 		sql.append(" (?, ?, ?, ?, ?, ?, ?) ");
@@ -27,7 +27,7 @@ public class RoupaDAO implements DAO<Roupa> {
 		try {
 			stat = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
 			stat.setInt(1, obj.getCategoria().ordinal());
-			stat.setString(2, obj.getCor());
+			stat.setString(2, (String)obj.getCor());
 			stat.setString(3, obj.getDescricao());
 			stat.setInt(4, obj.getEstoque());
 
@@ -159,16 +159,18 @@ public class RoupaDAO implements DAO<Roupa> {
 		//sql.append(" (categoria, cor, descricao,estoque,nome,preco,tamanho ) ");
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  r.categoria, ");
-		sql.append("  r.cor, ");
-		sql.append("  r.descricao, ");
-		sql.append("  r.estoque, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.nome, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.tamanho");
+
+		sql.append("  id, ");
+		sql.append("  cor, ");
+		sql.append("  descricao, ");
+		sql.append("  estoque, ");
+		sql.append("  preco, ");
+		sql.append("  nome, ");
+		sql.append("  preco, ");
+		sql.append("  tamanho ,");
+		sql.append("  categoria  ");
 		sql.append("FROM ");
-		sql.append("  roupa r, ");
+		sql.append("  roupa;");
 		
 		
 		PreparedStatement stat = null;
@@ -184,8 +186,8 @@ public class RoupaDAO implements DAO<Roupa> {
 				roupa.setEstoque(rs.getInt("estoque"));
 				roupa.setPreco(rs.getDouble("preco"));
 				roupa.setCor(rs.getString("cor"));
-				roupa.setTamanlho(rs.getInt("Tamanlho"));
-				roupa.setCategoria(Categoria.values()[rs.getInt("Categoria")]);
+				roupa.setTamanlho(rs.getInt("tamanho"));
+				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
 				listaRoupa.add(roupa);
 			}

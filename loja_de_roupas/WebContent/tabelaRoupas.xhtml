@@ -28,13 +28,13 @@
 	 			<h:messages styleClass="alert alert-danger hmessages"  />
 				<div class="form-row">
 				 	<div class="form-group col-md-10">
-				 		<h2 class="text-center wdi-red">Lista de Usuarios </h2>
+				 		<h2 class="text-center wdi-red">estoque roupa </h2>
 				    </div>
 				    <div class="form-group col-md-2">
 				    	<h:form>
-					    	<h:commandButton value="+ Usuario"
+					    	<h:commandButton value="+ Roupa"
 						     	class="btn btn-success"
-								action="#{consultaUsuarioController.novoUsuario}" />
+								action="#{tabelaRoupasController.novaRoupa}" />
 						</h:form>
 				    </div>
 				</div>		
@@ -43,42 +43,39 @@
 				<h:form id="formDataTable">
 				<h:dataTable 
 				id="dataTable"
-				value="#{consultaUsuarioController.listaUsuarios}"
+				value="#{tabelaRoupasController.listaRoupa}"
 				var="obj">
 				<h:column>
 					<f:facet name="header">Id</f:facet>
 					<h:outputLabel value="#{obj.id}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">CPF</f:facet>
-					<h:outputLabel value="#{obj.cpf}" />
-				</h:column>
-				<h:column>
 					<f:facet name="header">Nome</f:facet>
 					<h:outputLabel value="#{obj.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descricao</f:facet>
+					<h:outputLabel value="#{obj.descricao}" />
 				</h:column>		
 				<h:column>
-					<f:facet name="header">E-mail</f:facet>
-					<h:outputLabel value="#{obj.email}" />
+					<f:facet name="header">Cor</f:facet>
+					<h:outputLabel value="#{obj.cor}" />
 				</h:column>	
 				<h:column>
-					<f:facet name="header">Data de Nascimento</f:facet>
-					<h:outputLabel value="#{obj.dataNascimento}">
-						<f:convertDateTime type="localDate" pattern="dd-MM-yy"/>
+					<f:facet name="header">Categoria</f:facet>
+					<h:outputLabel value="#{obj.categoria}">
+					</h:outputLabel>
+				</h:column>
+					
+				<h:column>
+					<f:facet name="header">Estoque</f:facet>
+					<h:outputLabel value="#{obj.estoque}">
 					</h:outputLabel>
 				</h:column>		
 				<h:column>
-					<f:facet name="header">Perfil</f:facet>
-					<h:outputLabel value="#{obj.perfil.label}" />
-				</h:column>	
-				<h:column>
-					<f:facet name="header">Login</f:facet>
-					<h:outputLabel value="#{obj.login}" />
-				</h:column>		
-				<h:column>
-					<f:facet name="header">Senha</f:facet>
-					<h:outputLabel value="#{obj.senha}" />
-				</h:column>		
+					<f:facet name="header">Tamanho</f:facet>
+					<h:outputLabel value="#{obj.tamanlho}" />
+				</h:column>
 				<h:column>
 					<f:facet name="header">Ação</f:facet>
 					<h:commandButton value="Editar"
