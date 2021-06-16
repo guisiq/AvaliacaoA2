@@ -84,7 +84,7 @@ public class VendaDAO implements DAO<Venda> {
 		// salvando os itens de venda
 		StringBuffer sql = new StringBuffer();
 		sql.append("INSERT INTO itemvenda ");
-		sql.append(" (quantidade, valor_unitario, id_produto, id_venda) ");
+		sql.append(" (quantidade, valor_unitario, id_roupa, id_venda) ");
 		sql.append("VALUES ");
 		sql.append(" (?, ?, ?, ?) ");
 		
@@ -132,8 +132,7 @@ public class VendaDAO implements DAO<Venda> {
 		sql.append("FROM ");
 		sql.append("  venda v ");
 		sql.append("WHERE ");
-		sql.append("  v.id_usuario = ? ");
-		
+		sql.append("  v.id_usuario = ? ");		
 		PreparedStatement stat = null;
 		try {
 			stat = conn.prepareStatement(sql.toString());
@@ -183,16 +182,16 @@ public class VendaDAO implements DAO<Venda> {
 		sql.append("  i.id, ");
 		sql.append("  i.quantidade, ");
 		sql.append("  i.valor_unitario, ");
-		sql.append("  i.id_produto, ");
-		sql.append("  p.nome, ");
-		sql.append("  p.descricao, ");
-		sql.append("  p.estoque, ");
-		sql.append("  p.preco ");
+		sql.append("  i.id_roupa, ");
+		sql.append("  r.nome, ");
+		sql.append("  r.descricao, ");
+		sql.append("  r.estoque, ");
+		sql.append("  r.preco ");
 		sql.append("FROM ");
 		sql.append("  itemvenda i, ");
-		sql.append("  produto p ");
+		sql.append("  roupa r ");
 		sql.append("WHERE ");
-		sql.append("  i.id_produto = p.id ");
+		sql.append("  i.id_roupa = r.id ");
 		sql.append("  AND i.id_venda = ? ");
 		
 		PreparedStatement stat = null;
@@ -208,7 +207,7 @@ public class VendaDAO implements DAO<Venda> {
 				item.setQuantidade(rs.getInt("quantidade"));
 				item.setValorUnitario(rs.getDouble("valor_unitario"));
 				item.setRoupa(new Roupa());
-				item.getRoupa().setId(rs.getInt("id_produto"));
+				item.getRoupa().setId(rs.getInt("id_roupa"));
 				item.getRoupa().setNome(rs.getString("nome"));
 				item.getRoupa().setDescricao(rs.getString("descricao"));
 				item.getRoupa().setEstoque(rs.getInt("estoque"));

@@ -213,29 +213,28 @@ public class RoupaDAO implements DAO<Roupa> {
 		return listaRoupa;
 	}
 	
-/*
+
 	public List<Roupa> obterPeloNome(String nome) {
 		Connection conn = DAO.getConnection();
 		
-		List<Roupa> listaProduto = new ArrayList<Roupa>();
+		List<Roupa> listaRoupa = new ArrayList<Roupa>();
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  p.id, ");
-		sql.append("  p.nome, ");
-		sql.append("  p.descricao, ");
-		sql.append("  p.estoque, ");
-		sql.append("  p.preco, ");
-		sql.append("  pe.id AS id_peso, ");
-		sql.append("  pe.valor, ");
-		sql.append("  pe.tipopeso ");
+		sql.append("  r.categoria, ");
+		sql.append("  r.cor, ");
+		sql.append("  r.descricao, ");
+		sql.append("  r.estoque, ");
+		sql.append("  r.preco, ");
+		sql.append("  r.nome, ");
+		sql.append("  r.preco, ");
+		sql.append("  r.tamanho");
 		sql.append("FROM ");
-		sql.append("  produto p, ");
-		sql.append("  peso pe ");
+		sql.append("  roupa r, ");
 		sql.append("WHERE ");
-		sql.append("  p.id = pe.id ");
-		sql.append("  AND p.nome ILIKE ? ");
-		sql.append("ORDER BY p.nome ");
+		sql.append("  r.id = ? ");
+		sql.append("  AND r.nome ILIKE ? ");
+		sql.append("ORDER BY r.nome ");
 		
 		PreparedStatement stat = null;
 		try {
@@ -244,23 +243,22 @@ public class RoupaDAO implements DAO<Roupa> {
 			ResultSet rs = stat.executeQuery();
 			
 			while(rs.next()) {
-				Produto produto = new Produto();
-				produto.setId(rs.getInt("id"));
-				produto.setNome(rs.getString("nome"));
-				produto.setDescricao(rs.getString("descricao"));
-				produto.setEstoque(rs.getDouble("estoque"));
-				produto.setPreco(rs.getDouble("preco"));
+				Roupa roupa = new Roupa();
+				roupa.setId(rs.getInt("id"));
+				roupa.setNome(rs.getString("nome"));
+				roupa.setDescricao(rs.getString("descricao"));
+				roupa.setEstoque(rs.getInt("estoque"));
+				roupa.setPreco(rs.getDouble("preco"));
+				roupa.setCor(rs.getString("cor"));
+				roupa.setTamanlho(rs.getInt("tamanho"));
+				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
-				produto.setPeso(new Peso());
-				produto.getPeso().setId(rs.getInt("id_peso"));
-				produto.getPeso().setValor(rs.getDouble("valor"));
-				produto.getPeso().setTipoPeso(TipoPeso.valueOf(rs.getInt("tipopeso")));
+				listaRoupa.add(roupa);
 				
-				listaProduto.add(produto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			listaProduto = null;
+			listaRoupa = null;
 		} finally {
 			try {
 				stat.close();
@@ -274,34 +272,33 @@ public class RoupaDAO implements DAO<Roupa> {
 			}
 		}
 		
-		if (listaProduto == null || listaProduto.isEmpty())
+		if (listaRoupa == null || listaRoupa.isEmpty())
 			return null;
 		
-		return listaProduto;
+		return listaRoupa;
 	}
 	
 	public List<Roupa> obterPelaDescricao(String descricao) {
 		Connection conn = DAO.getConnection();
 		
-		List<Roupa> listaProduto = new ArrayList<Roupa>();
+		List<Roupa> listaRoupa = new ArrayList<Roupa>();
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  p.id, ");
-		sql.append("  p.nome, ");
-		sql.append("  p.descricao, ");
-		sql.append("  p.estoque, ");
-		sql.append("  p.preco, ");
-		sql.append("  pe.id AS id_peso, ");
-		sql.append("  pe.valor, ");
-		sql.append("  pe.tipopeso ");
+		sql.append("  r.categoria, ");
+		sql.append("  r.cor, ");
+		sql.append("  r.descricao, ");
+		sql.append("  r.estoque, ");
+		sql.append("  r.preco, ");
+		sql.append("  r.nome, ");
+		sql.append("  r.preco, ");
+		sql.append("  r.tamanho");
 		sql.append("FROM ");
-		sql.append("  produto p, ");
-		sql.append("  peso pe ");
+		sql.append("  roupa r, ");
 		sql.append("WHERE ");
-		sql.append("  p.id = pe.id ");
-		sql.append("  AND p.descricao ILIKE ? ");
-		sql.append("ORDER BY p.nome ");
+		sql.append("  r.id = ? ");
+		sql.append("  AND r.descricao ILIKE ? ");
+		sql.append("ORDER BY r.nome ");
 		
 		PreparedStatement stat = null;
 		try {
@@ -310,23 +307,21 @@ public class RoupaDAO implements DAO<Roupa> {
 			ResultSet rs = stat.executeQuery();
 			
 			while(rs.next()) {
-				Produto produto = new Produto();
-				produto.setId(rs.getInt("id"));
-				produto.setNome(rs.getString("nome"));
-				produto.setDescricao(rs.getString("descricao"));
-				produto.setEstoque(rs.getDouble("estoque"));
-				produto.setPreco(rs.getDouble("preco"));
+				Roupa roupa = new Roupa();
+				roupa.setId(rs.getInt("id"));
+				roupa.setNome(rs.getString("nome"));
+				roupa.setDescricao(rs.getString("descricao"));
+				roupa.setEstoque(rs.getInt("estoque"));
+				roupa.setPreco(rs.getDouble("preco"));
+				roupa.setCor(rs.getString("cor"));
+				roupa.setTamanlho(rs.getInt("tamanho"));
+				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
-				produto.setPeso(new Peso());
-				produto.getPeso().setId(rs.getInt("id_peso"));
-				produto.getPeso().setValor(rs.getDouble("valor"));
-				produto.getPeso().setTipoPeso(TipoPeso.valueOf(rs.getInt("tipopeso")));
-				
-				listaProduto.add(produto);
+				listaRoupa.add(roupa);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			listaProduto = null;
+			listaRoupa = null;
 		} finally {
 			try {
 				stat.close();
@@ -340,11 +335,11 @@ public class RoupaDAO implements DAO<Roupa> {
 			}
 		}
 		
-		if (listaProduto == null || listaProduto.isEmpty())
+		if (listaRoupa == null || listaRoupa.isEmpty())
 			return null;
 		
-		return listaProduto;
-	}*/
+		return listaRoupa;
+	}
 
 
 	@Override
