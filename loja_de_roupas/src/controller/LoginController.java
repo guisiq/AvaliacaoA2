@@ -25,7 +25,7 @@ public class LoginController {
 
 			Session.getInstance().set("usuarioLogado", usuarioLogado);
 			
-			return "index.xhtml";
+			return "usuario.xhtml";
 			
 		}
 		Util.addErrorMessage("Login ou senha inválido.");

@@ -79,11 +79,11 @@
 				<h:column>
 					<f:facet name="header">Ação</f:facet>
 					<h:commandButton value="Editar"
-						actionListener="#{usuarioController.editar(obj)}">
+						actionListener="#{tabelaRoupasController.editar()}">
 						<f:ajax execute="@this" render="@form"/>
 					</h:commandButton>
 					<h:commandButton value="Excluir"
-						actionListener="#{usuarioController.excluir(obj)}">
+						actionListener="#{tabelaRoupasController.excluir()}">
 						<f:ajax execute="@this" render="@form:pgDataTable @form:messages"/>
 					</h:commandButton>
 				</h:column>	

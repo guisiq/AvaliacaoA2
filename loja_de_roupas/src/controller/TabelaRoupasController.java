@@ -48,7 +48,14 @@ public class TabelaRoupasController implements Serializable {
 		return listaRoupa;
 	}
 
-	public void setListaProduto(List<Roupa> listaUsuario) {
+	public String excluir(Roupa obj) {
+		RoupaDAO dao= new RoupaDAO();
+		dao.excluir(boj.getId());
+		
+		
+	}
+	
+ 	public void setListaProduto(List<Roupa> listaUsuario) {
 		this.listaRoupa= listaUsuario;
 	}
 
