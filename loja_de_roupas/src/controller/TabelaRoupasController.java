@@ -26,16 +26,16 @@ public class TabelaRoupasController implements Serializable {
 	private String pesquisar;
 	
 	public String novaRoupa() {
-		return "CadastroRoupa.xhtml?faces-redirect=true";
+		return "cadastroRoupa.xhtml?faces-redirect=true";
 	}
 	
 	public String editar(Roupa obj) {
 		RoupaDAO dao = new RoupaDAO();
 		Roupa roupa = dao.obterUm(obj.getId());
-		Flash flash =  FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.put("roupaFlash", roupa);
 		
-		return "CadastroRoupa.xhtml?faces-redirect=true";
+		return "cadastroRoupa.xhtml?faces-redirect=true";
 	}
 	
 	public List<Roupa> getListaRoupa() {
@@ -48,9 +48,10 @@ public class TabelaRoupasController implements Serializable {
 		return listaRoupa;
 	}
 
-	public String excluir(Roupa obj) {
+	public void excluir(Roupa obj) {
 		RoupaDAO dao= new RoupaDAO();
-		dao.excluir(boj.getId());
+		dao.excluir(obj.getId());
+		this.listaRoupa = null;
 		
 		
 	}

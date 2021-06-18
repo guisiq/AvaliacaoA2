@@ -294,7 +294,7 @@ public class RoupaDAO implements DAO<Roupa> {
 		sql.append("  r.preco, ");
 		sql.append("  r.tamanho");
 		sql.append("FROM ");
-		sql.append("  roupa r, ");
+		sql.append("  roupa r ");
 		sql.append("WHERE ");
 		sql.append("  r.id = ? ");
 		sql.append("  AND r.descricao ILIKE ? ");
@@ -350,18 +350,20 @@ public class RoupaDAO implements DAO<Roupa> {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  r.categoria, ");
-		sql.append("  r.cor, ");
-		sql.append("  r.descricao, ");
-		sql.append("  r.estoque, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.nome, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.tamanho");
+
+		sql.append("  id, ");
+		sql.append("  cor, ");
+		sql.append("  descricao, ");
+		sql.append("  estoque, ");
+		sql.append("  preco, ");
+		sql.append("  nome, ");
+		sql.append("  preco, ");
+		sql.append("  tamanho ,");
+		sql.append("  categoria  ");
 		sql.append("FROM ");
-		sql.append("  roupa r, ");
+		sql.append("  roupa ");
 		sql.append("WHERE ");
-		sql.append("  u.id = ? ");
+		sql.append("  id = ? ");
 		
 		PreparedStatement stat = null;
 		try {
@@ -380,7 +382,7 @@ public class RoupaDAO implements DAO<Roupa> {
 				roupa.setPreco(rs.getDouble("preco"));
 				roupa.setCor(rs.getString("cor"));
 				roupa.setTamanlho(rs.getInt("Tamanlho"));
-				roupa.setCategoria(Categoria.values()[rs.getInt("Categoria")]);
+				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
 			}
 		} catch (Exception e) {

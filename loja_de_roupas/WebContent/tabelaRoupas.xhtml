@@ -34,7 +34,7 @@
 				    	<h:form>
 					    	<h:commandButton value="+ Roupa"
 						     	class="btn btn-success"
-								action="#{tabelaRoupasController.novaRoupa}" />
+								action="#{tabelaRoupasController.novaRoupa()}" />
 						</h:form>
 				    </div>
 				</div>		
@@ -79,12 +79,12 @@
 				<h:column>
 					<f:facet name="header">Ação</f:facet>
 					<h:commandButton value="Editar"
-						actionListener="#{tabelaRoupasController.editar()}">
+						action="#{tabelaRoupasController.editar(obj)}">
 						<f:ajax execute="@this" render="@form"/>
 					</h:commandButton>
 					<h:commandButton value="Excluir"
-						actionListener="#{tabelaRoupasController.excluir()}">
-						<f:ajax execute="@this" render="@form:pgDataTable @form:messages"/>
+						actionListener ="#{tabelaRoupasController.excluir(obj)}">
+						<f:ajax execute="@this" render="@form:formDataTable"/>
 					</h:commandButton>
 				</h:column>	
 			

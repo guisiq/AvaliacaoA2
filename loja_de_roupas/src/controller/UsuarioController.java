@@ -51,7 +51,7 @@ public class UsuarioController implements Serializable{
 		}
 	}
 	
-	private boolean verificaSenha() {
+	public boolean verificaSenha() {
 		if (getUsuario().getSenha().equals(getConfirmarSenha())) {
 			return true;
 		}

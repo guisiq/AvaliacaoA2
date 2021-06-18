@@ -29,7 +29,7 @@ public class CadastroRoupa  implements Serializable {
 	
 	public CadastroRoupa() {
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.keep("RoupaFlash");
+		flash.keep("roupaFlash");
 		setRoupa((Roupa)flash.get("roupaFlash"));
 	}
 	

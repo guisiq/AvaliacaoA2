@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Cadastro de Usuário</title>
+</h:head>
+<h:body>
+<ui:composition template="templade.xhtml"> 
+<ui:define name="conteudo"> 
+	<h2>Cadastro de Usuário</h2>
+	<h:form id="form1">
+		<h:messages id="messages" 
+					globalOnly="false"
+					errorStyle="color:red;margin:8px;"
+					infoStyle="color:green;margin:8px;"
+					warnStyle="color:yellow;margin:8px;" />
+		<h:panelGrid id="pgPrincipal" columns="2">
+		
+			<h:outputLabel value="CPF: " />
+			<h:panelGroup id="pgCpf">
+				<h:inputText id="itCpf" 
+							 value="#{usuarioController.usuario.cpf}" >
+					<f:ajax	event="blur" 
+							execute="@form"
+							render="@form"
+							listener="#{usuarioController.validarCpf}"
+							/>
+				</h:inputText>
+				<h:message for="itCpf" style="color:red;margin:8px;"/>
+			</h:panelGroup>
+			
+			<h:outputLabel value="Nome: " />
+			<h:inputText value="#{usuarioController.usuario.nome}"
+				 validatorMessage="O nome tem que possuir mais de 6 caracteres."
+				 required="true" requiredMessage="O nome deve ser preenchido.">
+				<f:validateLength minimum="6" />
+			</h:inputText>
+			
+			<h:outputLabel value="Email: " />
+			<h:inputText value="#{usuarioController.usuario.email}" />
+			
+			<h:outputLabel value="Data de Nascimento: " />
+			<h:inputText value="#{usuarioController.usuario.dataNascimento}"
+				converterMessage="A data deve serguir o seguinte formato: Ex.: 20/10/2000">
+				<f:convertDateTime type="localDate" pattern="dd/MM/yyyy"/>
+			</h:inputText>			
+			
+			
+			<h:outputLabel value="Login: " />
+			<h:inputText value="#{usuarioController.usuario.login}" />
+			
+			<h:outputLabel value="Senha: " />
+			<h:inputSecret id="isSenha" value="#{usuarioController.usuario.senha}" 
+						required="true"
+						requiredMessage="A senha deve ser informada.">
+			</h:inputSecret>
+			
+			<h:outputLabel value="Confirmar Senha: " />
+			<h:inputSecret value="#{usuarioController.confirmarSenha}" />
+	
+		</h:panelGrid>
+		
+		<h:panelGrid id="pgBotoes" columns="4">
+			<h:commandButton value="cadastrar " 
+				disabled="#{usuarioController.usuario.id != null}"
+				actionListener="#{usuarioController.incluir}">
+				<f:ajax execute="@this pgPrincipal" render="@form" />
+			</h:commandButton>
+				
+			
+			
+		</h:panelGrid>			 
+			
+	</h:form>
+	<h:form>
+	 <h:commandLink value="Listar Usuarios" action="consultausuario.xhtml?faces-redirect=true"/>
+	</h:form>
+ </ui:define>
+</ui:composition>
+	
+</h:body>
+</html>
