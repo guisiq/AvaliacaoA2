@@ -79,7 +79,7 @@
 				<h:column>
 					<f:facet name="header">Ação</f:facet>
 					<h:commandButton value="Editar"
-						action="#{tabelaRoupasController.editar(obj)}">
+						action="#{tabelaRoupasController.editar(obj.id)}">
 						<f:ajax execute="@this" render="@form"/>
 					</h:commandButton>
 					<h:commandButton value="Excluir"

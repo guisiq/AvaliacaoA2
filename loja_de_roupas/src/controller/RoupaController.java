@@ -30,8 +30,8 @@ package controller;
 		
 		public RoupaController() {
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-			flash.keep("RoupaFlash");
-			setRoupa((Roupa)flash.get("roupaFlash"));
+			flash.keep("Roupaedit");
+			setRoupa((Roupa)flash.get("roupaedit"));
 		}
 		
 		public Categoria[] getCategoria() {
