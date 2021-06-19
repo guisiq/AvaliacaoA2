@@ -29,11 +29,13 @@ public class TabelaRoupasController implements Serializable {
 		return "cadastroRoupa.xhtml?faces-redirect=true";
 	}
 	
-	public String editar(Roupa obj) {
+	public String editar(int obj) {
 		RoupaDAO dao = new RoupaDAO();
-		Roupa roupa = dao.obterUm(obj.getId());
+		
+		Roupa roupa = dao.obterUm(obj);
+		System.out.println(roupa.getId());
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.put("roupaFlash", roupa);
+		flash.put("roupaedit", roupa);
 		
 		return "cadastroRoupa.xhtml?faces-redirect=true";
 	}

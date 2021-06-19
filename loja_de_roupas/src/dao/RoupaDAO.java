@@ -73,7 +73,7 @@ public class RoupaDAO implements DAO<Roupa> {
 		sql.append(" categoria = ?, ");
 		sql.append(" cor = ?, ");
 		sql.append(" descricao= ?, ");
-		sql.append(" estoque = ? ");
+		sql.append(" estoque = ?, ");
 		sql.append(" nome = ?, ");
 		sql.append(" preco= ?, ");
 		sql.append(" tamanho  = ? ");
@@ -349,14 +349,12 @@ public class RoupaDAO implements DAO<Roupa> {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-
 		sql.append("  id, ");
 		sql.append("  cor, ");
 		sql.append("  descricao, ");
 		sql.append("  estoque, ");
 		sql.append("  preco, ");
 		sql.append("  nome, ");
-		sql.append("  preco, ");
 		sql.append("  tamanho ,");
 		sql.append("  categoria  ");
 		sql.append("FROM ");
@@ -380,7 +378,7 @@ public class RoupaDAO implements DAO<Roupa> {
 				roupa.setEstoque(rs.getInt("estoque"));
 				roupa.setPreco(rs.getDouble("preco"));
 				roupa.setCor(rs.getString("cor"));
-				roupa.setTamanlho(rs.getInt("Tamanlho"));
+				roupa.setTamanlho(rs.getInt("tamanho"));
 				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
 			}

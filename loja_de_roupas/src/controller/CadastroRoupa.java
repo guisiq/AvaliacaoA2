@@ -26,11 +26,13 @@ public class CadastroRoupa  implements Serializable {
 	private static final long serialVersionUID = 1304667158255601678L;
 	private Roupa roupa = null;
 	private List<Roupa> listaRoupa = null;
-	
-	public CadastroRoupa() {
+	 
+	CadastroRoupa() {
+		System.out.println("roupa cadastro ID:");
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.keep("roupaFlash");
-		setRoupa((Roupa)flash.get("roupaFlash"));
+		flash.keep("roupaedit");
+		setRoupa((Roupa)flash.get("roupaedit"));
+		System.out.println(roupa.getId());
 	}
 	
 	public Categoria[] getCategoria() {

@@ -59,13 +59,15 @@
 	
 		</h:panelGrid>
 		
-		<h:panelGrid id="pgBotoes" columns="4">
 			<h:commandButton value="Incluir" 
 				actionListener="#{roupaController.incluir}">
 				<f:ajax execute="@this pgPrincipal" render="@form" />
 			</h:commandButton>
-			
-		</h:panelGrid>
+			<h:commandButton value="alterar" 
+				actionListener="#{roupaController.alterar}">
+				<f:ajax execute="@this pgPrincipal" render="@form" />
+			</h:commandButton>
+		
 		
 	</h:form>
 	<h:form>

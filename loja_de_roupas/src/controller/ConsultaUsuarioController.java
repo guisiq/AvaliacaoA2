@@ -38,6 +38,11 @@ public class ConsultaUsuarioController implements Serializable {
 		return "usuario.xhtml?faces-redirect=true";
 	}
 	
+	public void excluir(Usuario obj) {
+		UsuarioDAO dao = new UsuarioDAO();
+		dao.excluir(obj.getId());
+		listaUsuario = null;
+	}
 	public List<Usuario> getListaUsuarios() {
 		if (listaUsuario == null) {
 			DAO<Usuario> dao = new UsuarioDAO();
