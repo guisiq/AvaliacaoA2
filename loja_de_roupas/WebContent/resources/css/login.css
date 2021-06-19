@@ -1,0 +1,18 @@
+section{
+    max-width: 400px;
+    text-align: center;
+    padding: 2%;
+    margin: auto;
+    margin-top: 10%;
+    background-color: white;
+    border-radius: 14px;
+}
+h1{
+    font-size: 240%;
+    margin: 1%;
+    margin-bottom: 7%;
+    
+}
+body{
+    background-color:black
+}

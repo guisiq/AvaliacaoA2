@@ -26,7 +26,6 @@ import dao.DAO;
 		 */
 		private static final long serialVersionUID = 1304667158255601678L;
 		private Roupa roupa = null;
-		private List<Roupa> listaRoupa = null;
 		
 		public RoupaController() {
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
@@ -56,44 +55,14 @@ import dao.DAO;
 				Util.addErrorMessage("Problemas ao alterar no banco de dados.");
 		}
 		
-		public void excluir() {
-			excluir(getRoupa());
-		}
-		
-		public void excluir(Roupa usu) {
-			DAO<Roupa> dao = new RoupaDAO();
-			if (dao.excluir(usu.getId())) {
-				Util.addInfoMessage("Exclusão realizada com sucesso.");
-				limpar();
-			} else
-				Util.addErrorMessage("Problemas ao excluir no banco de dados.");
-		}
 		
 		public void limpar() {
 			System.out.println("Limpar");
 			setRoupa(null);
-			setListaRoupa(null);
+		
 		}
 		
-		public void editar(Roupa usu) {
-			DAO<Roupa> dao = new RoupaDAO();
-			setRoupa(dao.obterUm(usu.getId()));
-		}
 		
-		public List<Roupa> getListaRoupa() {
-			if (listaRoupa == null) {
-				DAO<Roupa> dao = new RoupaDAO();
-				listaRoupa = dao.obterTodos();
-				if (listaRoupa == null)
-					listaRoupa = new ArrayList<Roupa>();
-			}
-			return listaRoupa;
-		}
-
-		public void setListaRoupa(List<Roupa> listaRoupa) {
-			this.listaRoupa= listaRoupa;
-		}
-
 		public Roupa getRoupa() {
 			if (roupa == null) {
 				roupa = new Roupa();
