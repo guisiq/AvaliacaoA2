@@ -97,9 +97,6 @@ public class VendaDAO implements DAO<Venda> {
 			stat.setInt(4, venda.getId());
 			
 			stat.execute();
-			
-			// o janio faria com o dao de produto
-			//atualizandoEstoque(item.getProduto(), item.getQuantidade(), conn);
 		}
 		
 	}

@@ -9,9 +9,12 @@ import javax.inject.Named;
 
 import application.Session;
 import application.Util;
+import dao.DAO;
 import dao.RoupaDAO;
+import dao.UsuarioDAO;
 import model.ItemVenda;
 import model.Roupa;
+import model.Usuario;
 
 @Named
 @ViewScoped
@@ -26,11 +29,12 @@ public class VendaController implements Serializable {
 	public void pesquisar() {
 		RoupaDAO dao = new RoupaDAO();
 		if (getTipoFiltro() == 1)
-			setListaRoupa(dao.obterTodos());
-		else
+			setListaRoupa(dao.obterPeloNome(filtro));
+		if (getTipoFiltro() == 2)
 			setListaRoupa(dao.obterPelaDescricao(filtro));
+		else if (getTipoFiltro() == null)
+			setListaRoupa(dao.obterTodos());
 	}
-	
 	
 	public void addCarrinho(Roupa roupa) {
 		// obtendo o carrinho da sessao

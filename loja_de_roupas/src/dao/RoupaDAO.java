@@ -221,20 +221,20 @@ public class RoupaDAO implements DAO<Roupa> {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  r.categoria, ");
-		sql.append("  r.cor, ");
-		sql.append("  r.descricao, ");
-		sql.append("  r.estoque, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.nome, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.tamanho");
+		sql.append("  id, ");
+		sql.append("  cor, ");
+		sql.append("  descricao, ");
+		sql.append("  estoque, ");
+		sql.append("  preco, ");
+		sql.append("  nome, ");
+		sql.append("  preco, ");
+		sql.append("  tamanho ,");
+		sql.append("  categoria  ");
 		sql.append("FROM ");
-		sql.append("  roupa r, ");
+		sql.append("  roupa ");
 		sql.append("WHERE ");
-		sql.append("  r.id = ? ");
-		sql.append("  AND r.nome ILIKE ? ");
-		sql.append("ORDER BY r.nome ");
+		sql.append(" nome ILIKE ? ");
+		sql.append("ORDER BY nome ");
 		
 		PreparedStatement stat = null;
 		try {
@@ -254,7 +254,7 @@ public class RoupaDAO implements DAO<Roupa> {
 				roupa.setCategoria(Categoria.values()[rs.getInt("categoria")]);
 				
 				listaRoupa.add(roupa);
-				
+			
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -285,20 +285,20 @@ public class RoupaDAO implements DAO<Roupa> {
 		
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT ");
-		sql.append("  r.categoria, ");
-		sql.append("  r.cor, ");
-		sql.append("  r.descricao, ");
-		sql.append("  r.estoque, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.nome, ");
-		sql.append("  r.preco, ");
-		sql.append("  r.tamanho");
-		sql.append("FROM ");
-		sql.append("  roupa r ");
-		sql.append("WHERE ");
-		sql.append("  r.id = ? ");
-		sql.append("  AND r.descricao ILIKE ? ");
-		sql.append("ORDER BY r.nome ");
+		sql.append("  id, ");
+		sql.append("  cor, ");
+		sql.append("  descricao, ");
+		sql.append("  estoque, ");
+		sql.append("  preco, ");
+		sql.append("  nome, ");
+		sql.append("  preco, ");
+		sql.append("  tamanho ,");
+		sql.append("  categoria  ");
+		sql.append(" FROM ");
+		sql.append("  roupa ");
+		sql.append(" WHERE ");
+		sql.append(" descricao ILIKE ? ");
+		sql.append("ORDER BY nome ");
 		
 		PreparedStatement stat = null;
 		try {
@@ -340,7 +340,6 @@ public class RoupaDAO implements DAO<Roupa> {
 		
 		return listaRoupa;
 	}
-
 
 	@Override
 	public Roupa obterUm(Integer id) {

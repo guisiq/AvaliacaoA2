@@ -10,6 +10,8 @@ public class Roupa {
 	private int tamanlho ;
 	private String cor;
 	
+	
+
 	public Integer getId() {
 		return id;
 	}

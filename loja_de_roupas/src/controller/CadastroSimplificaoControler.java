@@ -3,6 +3,7 @@ package controller;
 import application.Util;
 import dao.DAO;
 import dao.UsuarioDAO;
+import model.ItemVenda;
 import model.Perfil;
 import model.Usuario;
 
@@ -20,18 +21,18 @@ public class CadastroSimplificaoControler extends UsuarioController{
 		}
 		
 		DAO<Usuario> dao = new UsuarioDAO();
-		
 		String hash = Util.hash(getUsuario().getSenha() + getUsuario().getLogin());
 		getUsuario().setSenha(hash);
 		getUsuario().setPerfil(Perfil.CLIENTE);
 		
+		
+
 		if (dao.inserir(getUsuario())) {
+			
 			Util.addInfoMessage("Inclusão realizada com sucesso.");
 			limpar();
 		} else
 			Util.addErrorMessage("Problemas ao inserir no banco de dados.");
 		
 	}
-	
-
 }
