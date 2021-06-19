@@ -10,6 +10,13 @@
 <ui:composition template="templade.xhtml"> 
 <ui:define name="conteudo"> 
 	<h2>Cadastro de Usuário</h2>
+	<h:form>
+		<h:commandButton value="listar usuario" 
+				action="consultausuario.xhtml?faces-redirect=true">
+				<f:ajax execute="@this" render="@none" />
+		</h:commandButton>
+	</h:form>
+	<hr/>
 	<h:form id="form1">
 		<h:messages id="messages" 
 					globalOnly="false"
@@ -96,9 +103,7 @@
 		</h:panelGrid>			 
 			
 	</h:form>
-	<h:form>
-	 <h:commandLink value="Listar Usuarios" action="consultausuario.xhtml?faces-redirect=true"/>
-	</h:form>
+	
  </ui:define>
 </ui:composition>
 	

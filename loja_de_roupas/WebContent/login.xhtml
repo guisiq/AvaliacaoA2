@@ -24,19 +24,22 @@
 			<h:messages styleClass="alert alert-danger hmessages"  />
 			<h:form>
 				<div >
-					<div >
+					<div class="canpo">
 						<h:outputLabel value="Usuário:"  styleClass="wdi-red"/>
 						<h:inputText styleClass="form-control form-control-lg flat-input"
 							value="#{loginController.usuario.login}" />
 					</div>
-					<div >
+					<div class="canpo">
 						<h:outputLabel value="Senha:" />
 						<h:inputSecret
 							value="#{loginController.usuario.senha}" />
 					</div>
+					<div>
 					<h:commandButton value="Logar"
 						action="#{loginController.entrar()}" />
-					<h:commandLink value="Cadastro" action="cadastroSimplificado.xhtml?faces-redirect=true"/>
+					<h:commandButton value="cadastrar"
+						action="#{loginController.cadastro()}" />
+					</div>
 					
 				</div>
 			</h:form>

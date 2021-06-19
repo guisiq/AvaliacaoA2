@@ -32,6 +32,9 @@ public class LoginController {
 		return null;
 		
 	}
+	public String cadastro() {
+		return "cadastroSimplificado.xhtml?faces-redirect=true";
+	}
 	
 	public void limpar() {
 		usuario = null;

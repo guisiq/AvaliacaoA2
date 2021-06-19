@@ -58,9 +58,10 @@
 							      <h:outputLabel value="#{obj.preco}"/>
 							   </h:column>
 							   <h:column>
-							      <f:facet name="header">Ação</f:facet>
-							      <h:commandLink value="Adicionar ao carrinho" 
-							      		action="#{vendaController.addCarrinho(obj)}"/>
+									<f:facet name="header">Ação</f:facet>
+							      	<h:commandButton value="Adicionar ao carrinho" 
+										action="#{vendaController.addCarrinho(obj)}">
+									</h:commandButton>
 							   </h:column>		   
 						</h:dataTable>
 				</h:form>
